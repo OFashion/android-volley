@@ -3,7 +3,7 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:1.1.+'
+        classpath 'com.android.tools.build:gradle:1.2.3'
     }
 }
 
@@ -47,4 +47,3 @@ android {
 }
 
 apply from: 'https://raw.github.com/mcxiaoke/gradle-mvn-push/master/jar.gradle'
-apply from: 'https://raw.github.com/mcxiaoke/gradle-mvn-push/master/gradle-mvn-push.gradle'
