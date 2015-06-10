@@ -87,8 +87,19 @@ public abstract class Request<T> implements Comparable<Request<T>> {
     /** The request queue this request is associated with. */
     private RequestQueue mRequestQueue;
 
-    /** Whether or not responses to this request should be cached. */
+    /** Whether or not responses to this request should be cached.
+     *
+     *  Update: This fields actually not only has decided the cache should be added, but also decided whether the cache could be applied,
+     *  which does not match the requirement from certain project when the request is not allowed to use cache but the response of the response should be added to the cache.
+     *  To fix this problem, I am to add an extra parameter mCouldUseCache.
+     **/
     private boolean mShouldCache = true;
+
+    /**
+     * whether or not the request could use cache.
+     */
+    private boolean mCouldUseCache = true;
+
 
     /** Whether or not this request has been canceled. */
     private boolean mCanceled = false;
@@ -512,6 +523,23 @@ public abstract class Request<T> implements Comparable<Request<T>> {
      */
     public final boolean shouldCache() {
         return mShouldCache;
+    }
+
+    /**
+     * Set whether or not this request could use cache.
+     *
+     * @return This Request object to allow for chaining.
+     */
+    public final Request<?> setCouldUseCache(boolean couldUseCache) {
+        mCouldUseCache = couldUseCache;
+        return this;
+    }
+
+    /**
+     * Returns true if this request could be cached.
+     */
+    public final boolean couldUseCache() {
+        return mCouldUseCache;
     }
 
     /**
