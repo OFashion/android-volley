@@ -574,7 +574,7 @@ public abstract class Request<T> implements Comparable<Request<T>> {
      * Returns true if this request could be sent to server. Generally, when network is offline,
      * we should return false to indicate that there is no need to send further request so as to avoid error response while the cache is appliable.
      */
-    public final boolean isRefreshable() {
+    public boolean isRefreshable() {
         return true;
     }
 
