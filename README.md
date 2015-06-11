@@ -11,6 +11,7 @@ This fork is intented to be used on the project that I work on. The major differ
 Comment: the above method comes in handy in the following situation:
 Generally, when network is offline, it will be more user-friendly to show the cache of the request if the cache is applicable. However, after the response of cache is delivered but the request should be refreshed, the network request will be sent. Because the network is offline, so error will be returned which overrides the previous response from Cache.
 
+*****************************************************************************************************************************
 By providing this method, we could decide whether we should send further network request so as to avoid error response while the cache is applicable.
 
 
