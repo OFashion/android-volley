@@ -131,6 +131,7 @@ public class CacheDispatcher extends Thread {
 
                 if (!entry.refreshNeeded() || !request.isRefreshable()) {
                     // Completely unexpired cache hit. Just deliver the response.
+                    request.addMarker("cache-hit-returned-response due to entry refreshNeeded:" + entry.refreshNeeded() + ", request is refreshable:" + request.isRefreshable());
                     mDelivery.postResponse(request, response);
                 } else {
                     // Soft-expired cache hit. We can deliver the cached response,
