@@ -64,7 +64,7 @@ public interface Cache {
     /**
      * Data and metadata for an entry returned by the cache.
      */
-    public static class Entry {
+    class Entry {
         /** The data returned from cache. */
         public byte[] data;
 
