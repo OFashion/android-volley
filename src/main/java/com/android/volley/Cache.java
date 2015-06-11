@@ -16,8 +16,6 @@
 
 package com.android.volley;
 
-import android.util.Log;
-
 import java.util.Collections;
 import java.util.Map;
 
@@ -110,20 +108,14 @@ public interface Cache {
          * True if the entry is expired.
          */
         public boolean isExpired() {
-            long now = System.currentTimeMillis();
-            boolean result = this.ttl < now;
-            Log.v("Volley", "RAW Volley check cache isExpired  : ttl:" + this.ttl + ", now:" + now + ", cache isExpired  : " + result);
-            return result;
+            return this.ttl < System.currentTimeMillis();
         }
 
         /**
          * True if a refresh is needed from the original data source.
          */
         public boolean refreshNeeded() {
-            long now = System.currentTimeMillis();
-            boolean result = this.softTtl < now;
-            Log.v("Volley", "RAW Volley check refresh needed: softTtl:" + this.softTtl + ", now:" + now + ", need refresh : " + result);
-            return result;
+            return this.softTtl < System.currentTimeMillis();
 
         }
     }
